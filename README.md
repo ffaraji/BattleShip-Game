@@ -1,4 +1,4 @@
-# BattleShip Game
+# battleship
 This battleShip game is written in scalable cloud-native approach.
 
 Any number of users can connect to the server. For each game, two users will be assigned.
@@ -56,7 +56,7 @@ This sample client is a dummy client and send random targets to server
 
 # Run tests
 Under the test branch, there are some test files like test_1.py.
-These tests are unit tests and test different parts of server
+These tests are unit tests and test different parts of server.
 
 # Future works
 HTTP2 with header load balancing for in memory (in POD) cache

@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+  app:
+    build: .
+    ports:
+      - 5000:5000
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '9000:6379'
+    command: redis-server --loglevel warning 
+    volumes: 
+      - cache:/data
+volumes:
+  cache:
+    driver: local
