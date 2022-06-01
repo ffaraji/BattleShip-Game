@@ -57,6 +57,32 @@ class Match:
                 battleField.placeShip(ship)
                 break
 
+    def initNewMatchManualy(self, matchID):
+
+        # init battle fields
+        fieldWidth = int(self.config.data['MAP']['fieldwidth'])
+        fieldHeight = int(self.config.data['MAP']['fieldheight'])
+        
+        # init ships and add to battleField
+        for i in [1, 2]:
+            battleField = BattleField(fieldWidth, fieldHeight)
+            battleField.setMatchID(matchID)
+            self.addShipsToFieldManualy(battleField, Destroyer(), 0, 0, Direction.HORIZONTAL)
+            self.addShipsToFieldManualy(battleField, Submarine(), 1, 0, Direction.HORIZONTAL)
+            self.addShipsToFieldManualy(battleField, Cruiser(), 2, 0, Direction.HORIZONTAL)
+            self.addShipsToFieldManualy(battleField, Battleship(), 3, 0, Direction.HORIZONTAL)
+            self.addShipsToFieldManualy(battleField, Carrier(), 4, 0, Direction.HORIZONTAL)
+            self.db.dumpBattleField(matchID, i, battleField)
+
+        return fieldWidth, fieldHeight
+
+    def addShipsToFieldManualy(self, battleField, ship, row, col, direction):
+        # check corner edges
+        # check infinity loop (map size )
+        ship.setPosition(row, col)
+        ship.setDirection(direction)
+        battleField.placeShip(ship)
+
     def getFieldBounderis(self, matchID):
         battleField = self.db.loadBattleField(matchID, 1)
         return battleField.fieldWidth, battleField.fieldHeight

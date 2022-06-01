@@ -11,25 +11,22 @@ from battleship.server.ship import Ship
 
 class RedisCache:
 
-    # singleton
+    # singleton pattern
     __instance = None
-
     def __new__(cls):
         if cls.__instance is None:
-            cls.__instance = super(RedisCache, cls).__new__(cls)
+            cls.__instance = super(RedisCache,cls).__new__(cls)
             cls.__instance.__initialized = False
         return cls.__instance
 
     def __init__(self) -> None:
         try:
-            config = Config()
-            host = config.data['REDIS']['host']
-            port = int(config.data['REDIS']['port'])
-            db = int(config.data['REDIS']['db'])
-            self.redis = redis.Redis(host=host, port=port, db=db)
-            # self.redis.ping()
-        except Exception as e:
-            print('Redis config not exist....', e)
+            host = Config.data['REDIS']['host']
+            port = int(Config.data['REDIS']['port'])
+            db = int(Config.data['REDIS']['db'])
+            self.redis = redis.Redis(host = host, port = port, db = db)
+        except:
+            self.redis = redis.Redis()
             
     def isTargetInHits(self, matchID, playerID, target: Target):
         seqID = playerID[-1]
