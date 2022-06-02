@@ -9,7 +9,7 @@ from battleship.match.hitResult import HitResult
 
 class Player:
     def __init__(self) -> None:
-        pass
+        self.name = ''
 
     def attack(self):
         target = self.calculateTarget()
