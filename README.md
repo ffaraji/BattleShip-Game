@@ -63,5 +63,7 @@ HTTP2 with header load balancing for in memory (in POD) cache
 
 logging, monitoring
 
+Authentication
+
 
 
