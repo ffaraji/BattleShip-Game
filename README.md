@@ -1,4 +1,4 @@
-# battleship
+# BattleShip Game
 This battleShip game is written in scalable cloud-native approach.
 
 Any number of users can connect to the server. For each game, two users will be assigned.
