@@ -1,4 +1,4 @@
-# battleship
+# BattleShip Game
 This battleShip game is written in scalable cloud-native approach.
 
 Any number of users can connect to the server. For each game, two users will be assigned.
@@ -9,9 +9,9 @@ Each user connection and request can be sent to any instance or pod. So LoadBala
 
 Currently, users(clients) can send thier requests in Rest format.
 All the requests are post.
-A user can send /newmatch request to start a game. A matchID and PlayerID then return to user. Theise IDs should be submitted with each request then.
+A user can send /newmatch request to start a game. A matchID and PlayerID then return to user. These IDs should be submitted with each request then.
 
-User can check their turn by sending multiple /attack request. This will be fixed latter by applying HTTP2 protocol.
+User can check their turn by sending multiple /attack request. This will be fixed latter by applying HTTP2 protocol. Then server can notify the user turn to the users.
 
 Users receive their attack response in the following format:
 [HitResult, row, col, round]
@@ -61,9 +61,9 @@ These tests are unit tests and test different parts of server.
 # Future works
 HTTP2 with header load balancing for in memory (in POD) cache
 
-websocket
-
 logging, monitoring
+
+Authentication
 
 
 
